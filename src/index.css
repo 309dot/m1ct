@@ -1,5 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 
+:root {
+  --color-dark-navy: #0B0C0E;
+  --color-text-primary: #14151A;
+  --color-badge-bg: #E3EAFD;
+  --color-badge-text: #133A9A;
+  --color-comment-bg: #FFF58A;
+  --color-cta-bg: #8AE0FF;
+  --color-text-muted: rgba(15, 19, 36, 0.6);
+  
+  --font-family-inter: Inter, sans-serif;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -7,11 +19,23 @@
 }
 
 body {
-  font-family: Inter, sans-serif;
+  font-family: var(--font-family-inter);
   line-height: 1.6;
-  color: #333;
+  color: var(--color-text-primary);
   background-color: #f5f5f5;
 }
+
+/* CSS Variables as classes */
+.bg-dark-navy { background-color: var(--color-dark-navy); }
+.bg-badge-bg { background-color: var(--color-badge-bg); }
+.bg-comment-bg { background-color: var(--color-comment-bg); }
+.bg-cta-bg { background-color: var(--color-cta-bg); }
+
+.text-text-primary { color: var(--color-text-primary); }
+.text-badge-text { color: var(--color-badge-text); }
+.text-text-muted { color: var(--color-text-muted); }
+
+.border-badge-text\/10 { border-color: rgba(19, 58, 154, 0.1); }
 
 /* Utility classes */
 .min-h-screen { min-height: 100vh; }
@@ -26,7 +50,6 @@ body {
 .bg-blue-800 { background-color: #1e40af; }
 .bg-gray-900 { background-color: #111827; }
 .bg-gray-800 { background-color: #1f2937; }
-.bg-gray-100 { background-color: #f3f4f6; }
 .bg-gray-200 { background-color: #e5e7eb; }
 
 .text-gray-600 { color: #4b5563; }
@@ -36,6 +59,7 @@ body {
 .text-blue-600 { color: #2563eb; }
 .text-blue-800 { color: #1e40af; }
 .text-white { color: white; }
+.text-gray-400 { color: #9ca3af; }
 
 .flex { display: flex; }
 .flex-col { flex-direction: column; }
@@ -59,6 +83,7 @@ body {
 .py-2 { padding-top: 0.5rem; padding-bottom: 0.5rem; }
 .py-3 { padding-top: 0.75rem; padding-bottom: 0.75rem; }
 .py-4 { padding-top: 1rem; padding-bottom: 1rem; }
+.pt-6 { padding-top: 1.5rem; }
 .pt-8 { padding-top: 2rem; }
 .pb-4 { padding-bottom: 1rem; }
 .mb-2 { margin-bottom: 0.5rem; }
@@ -72,6 +97,7 @@ body {
 
 .rounded-full { border-radius: 9999px; }
 .rounded-2xl { border-radius: 1rem; }
+.rounded-b-2xl { border-bottom-left-radius: 1rem; border-bottom-right-radius: 1rem; }
 
 .text-sm { font-size: 0.875rem; }
 .text-base { font-size: 1rem; }
@@ -98,6 +124,9 @@ body {
 .w-full { width: 100%; }
 
 .inline-block { display: inline-block; }
+.inline-flex { display: inline-flex; }
+.cursor-pointer { cursor: pointer; }
+.cursor-not-allowed { cursor: not-allowed; }
 
 .transition-colors { transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out; }
 
@@ -105,6 +134,11 @@ body {
 .hover\:bg-gray-200:hover { background-color: #e5e7eb; }
 .hover\:bg-gray-800:hover { background-color: #1f2937; }
 .hover\:text-blue-800:hover { color: #1e40af; }
+.hover\:bg-badge-bg\/80:hover { background-color: rgba(227, 234, 253, 0.8); }
+
+.disabled\:bg-gray-100:disabled { background-color: #f3f4f6; }
+.disabled\:text-gray-400:disabled { color: #9ca3af; }
+.disabled\:cursor-not-allowed:disabled { cursor: not-allowed; }
 
 .animate-pulse {
   animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;

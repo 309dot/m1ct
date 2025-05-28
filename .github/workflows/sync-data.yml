@@ -1,0 +1,64 @@
+name: Sync Google Sheets Data
+
+on:
+  # 수동 트리거
+  workflow_dispatch:
+  
+  # 스케줄 (매 30분마다 실행)
+  schedule:
+    - cron: '*/30 * * * *'
+  
+  # 웹훅 트리거 (구글 시트 변경 시)
+  repository_dispatch:
+    types: [sheets-updated]
+
+jobs:
+  sync-data:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+    
+    - name: Install dependencies
+      run: npm ci
+    
+    - name: Sync Google Sheets data
+      env:
+        GOOGLE_SHEET_CSV_URL: ${{ secrets.GOOGLE_SHEET_CSV_URL }}
+      run: npm run sync-sheets
+    
+    - name: Check for changes
+      id: verify-changed-files
+      run: |
+        if [ -n "$(git status --porcelain)" ]; then
+          echo "changed=true" >> $GITHUB_OUTPUT
+        else
+          echo "changed=false" >> $GITHUB_OUTPUT
+        fi
+    
+    - name: Commit and push changes
+      if: steps.verify-changed-files.outputs.changed == 'true'
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add public/data/
+        git commit -m "🔄 Update coffee data from Google Sheets [$(date +'%Y-%m-%d %H:%M:%S')]"
+        git push
+    
+    - name: Deploy to Vercel
+      if: steps.verify-changed-files.outputs.changed == 'true'
+      uses: amondnet/vercel-action@v25
+      with:
+        vercel-token: ${{ secrets.VERCEL_TOKEN }}
+        vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+        vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+        vercel-args: '--prod' 

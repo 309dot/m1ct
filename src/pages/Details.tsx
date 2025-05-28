@@ -1,7 +1,5 @@
 import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { Badge } from '../components/ui/Badge';
-import { ArrowRightIcon } from '../components/icons';
 
 interface CoffeeData {
   id: string;
@@ -19,6 +17,15 @@ interface CoffeeData {
   tastingNotes: string[];
   active: boolean;
   createdAt: string;
+}
+
+// 간단한 Badge 컴포넌트
+function Badge({ children }: { children: React.ReactNode }) {
+  return (
+    <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">
+      {children}
+    </span>
+  );
 }
 
 export function Details() {
@@ -174,7 +181,7 @@ export function Details() {
             </button>
             <button className="flex-1 bg-gray-900 text-white py-3 rounded-full font-medium hover:bg-gray-800 transition-colors flex items-center justify-center gap-2">
               장바구니 담기
-              <ArrowRightIcon size={16} />
+              <span>→</span>
             </button>
           </div>
         </section>

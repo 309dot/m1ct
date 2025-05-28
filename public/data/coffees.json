@@ -4,7 +4,7 @@
     "name": "Addisu Hulichaye",
     "origin": "Sidamo, Ethiopia",
     "slug": "addisu-hulichaye-ethiopia",
-    "description": "A bright and floral coffee with citrus notes and a clean finish. This natural process coffee showcases the unique terroir of the Sidamo region.",
+    "description": "A bright and floral coffee with citrus notes and a clean finish",
     "farmer": "Addisu Hulichaye",
     "altitude": "1,800-2,000m",
     "processingMethod": "Natural",
@@ -19,36 +19,9 @@
     "tastingNotes": [
       "citrus",
       "floral",
-      "bright",
-      "clean"
+      "bright"
     ],
     "active": true,
     "createdAt": "2024-01-15"
-  },
-  {
-    "id": "col-001",
-    "name": "Colombian Supremo",
-    "origin": "Huila, Colombia",
-    "slug": "colombian-supremo-huila",
-    "description": "A well-balanced coffee with chocolate and caramel notes. This washed process coffee offers a smooth and rich flavor profile.",
-    "farmer": "Various Cooperatives",
-    "altitude": "1,500-1,800m",
-    "processingMethod": "Washed",
-    "roastLevel": "Medium",
-    "harvestDate": "2023년 12월",
-    "price": 25000,
-    "badges": [
-      "chocolate",
-      "caramel",
-      "smooth"
-    ],
-    "tastingNotes": [
-      "chocolate",
-      "caramel",
-      "balanced",
-      "rich"
-    ],
-    "active": true,
-    "createdAt": "2024-01-20"
   }
 ]
